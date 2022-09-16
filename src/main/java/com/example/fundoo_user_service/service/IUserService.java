@@ -6,6 +6,7 @@ import com.example.fundoo_user_service.util.Response;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.IOException;
 
 public interface IUserService {
 
@@ -16,10 +17,12 @@ public interface IUserService {
     Response deleteUser(String token);
     Response restoreUser(String token);
     Response deletePermanentlyUser(String token);
-    Response setProfile(String token, MultipartFile profilePic);
+    Response setProfile(String token, MultipartFile profilePic) throws IOException;
     Response resetPassword(String emailId,String newPwd);
     Response changePassword(String token,String newPwd);
-    Boolean verifyUser(String token);
+    Boolean verifyUser(Long userId);
+    Boolean activateUser(String token);
+    Boolean emailVerification(String emailId);
     Response login(String emailId,String password);
 
 }

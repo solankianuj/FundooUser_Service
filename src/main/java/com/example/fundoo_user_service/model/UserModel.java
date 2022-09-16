@@ -7,10 +7,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.File;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -34,7 +31,8 @@ public class UserModel {
     private Boolean isDeleted;
     private Date dob;
     private String phoneNo;
-    private String profilePic;
+    @Lob
+    private  byte[]  profilePic;
 
     public UserModel(UserDTO userDTO) {
         this.fullName=userDTO.getFullName();
@@ -42,8 +40,5 @@ public class UserModel {
         this.password=userDTO.getPassword();
         this.phoneNo=userDTO.getPhoneNo();
         this.dob=userDTO.getDob();
-        this.isActive=userDTO.getIsActive();
-        this.isDeleted=userDTO.getIsDeleted();
-
     }
 }

@@ -8,8 +8,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserConfig {
 
+    /**
+     * purpose-creating password encoder bean.
+     * @return
+     */
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
+
+
 }
