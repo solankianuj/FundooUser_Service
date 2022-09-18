@@ -156,8 +156,9 @@ public class UserController {
      * @return
      */
     @GetMapping("/validatingUser/{userId}")
-    public Boolean validatingUser(@PathVariable Long userId){
-        return userServices.verifyUser(userId);
+    public ResponseEntity<Response> validatingUser(@PathVariable Long userId){
+        Response response= userServices.verifyUser(userId);
+        return new ResponseEntity<>(response,HttpStatus.OK);
     }
 
     /**
@@ -176,7 +177,8 @@ public class UserController {
      * @return
      */
     @GetMapping("/emailVerify/{emailId}")
-    Boolean emailVerification(@PathVariable String emailId){
-        return userServices.emailVerification(emailId);
+    ResponseEntity<Response> emailVerification(@PathVariable String emailId){
+        Response response= userServices.emailVerification(emailId);
+        return new ResponseEntity<>(response,HttpStatus.OK);
     }
 }

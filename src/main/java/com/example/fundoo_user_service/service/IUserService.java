@@ -20,9 +20,9 @@ public interface IUserService {
     Response setProfile(String token, MultipartFile profilePic) throws IOException;
     Response resetPassword(String emailId,String newPwd);
     Response changePassword(String token,String newPwd);
-    Boolean verifyUser(Long userId);
+    Response verifyUser(Long userId);
     Boolean activateUser(String token);
-    Boolean emailVerification(String emailId);
+    Response emailVerification(String emailId);
     Response login(String emailId,String password);
 
 }

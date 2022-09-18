@@ -219,10 +219,10 @@ public class UserServices implements IUserService{
      * @return
      */
     @Override
-    public Boolean verifyUser(Long userId) {
+    public Response verifyUser(Long userId) {
         Optional<UserModel> userModel=userRepository.findById(userId);
         if (userModel.isPresent()){
-            return true;
+            return new Response("User is valid.",200,userModel.get());
         }
         throw new UserNotFound(200,"User Not Found !");
     }
@@ -250,10 +250,10 @@ public class UserServices implements IUserService{
      * @return
      */
     @Override
-    public Boolean emailVerification(String emailId) {
+    public Response emailVerification(String emailId) {
         Optional<UserModel> userModel=userRepository.findByEmailId(emailId);
         if (userModel.isPresent()){
-            return true;
+            return new Response("User is valid.",200,userModel.get());
         }
         throw new UserNotFound(200,"User Not Found !");
     }
